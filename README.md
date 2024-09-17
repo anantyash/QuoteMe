@@ -24,4 +24,4 @@ QuoteMe is a simple mobile app that displays inspirational quotes from a third-p
 To use the app, you'll need to obtain an API key from the quote API provider. Replace the `YOUR_API_KEY` placeholder in the code with your actual API key.
 
 ## Acknowledgments
-* [[FavQs](https://favqs.com/)]: For providing the quote API used in this app.
+* [FavQs](https://favqs.com/): For providing the quote API used in this app.
