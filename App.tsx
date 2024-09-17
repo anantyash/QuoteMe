@@ -1,117 +1,103 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
+const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+  const [quote, setQuote] = useState('');
+  const [author, setAuthor] = useState('');
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+  useEffect(() => {
+    fetchQuote();
+  }, []);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  const fetchQuote = () => {
+    fetch('https://favqs.com/api/qotd')
+      .then(response => response.json())
+      .then(data => {
+        setQuote(data.quote.body);
+        setAuthor(data.quote.author);})
+      .catch(error => console.error(error));
+  };
+
+  const handleRefresh = () => {
+    fetchQuote();
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    
+    <View style={[styles.container, isDarkMode? styles.darktheme : styles.lighttheme]}>
+      <View style={styles.header}>
+        <Text style={[styles.heading, isDarkMode? styles.darktheme : styles.lighttheme]}>Quote OF The  Day</Text>
+      </View>
+     
+      <View style={styles.card}>
+        
+        <Text style={styles.quote}>"{quote}"</Text>
+        <Text style={styles.author}> - {author}</Text>
+        <TouchableOpacity style={styles.btn} onPress={handleRefresh}>
+          <Text style={{color:'#7d7e7d'}}>Refresh</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  darktheme:{
+    backgroundColor:'#000000',
+    color: '#ffffff'
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  lighttheme:{
+    backgroundColor: '#ffffff',
+    color: '#000000'
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    
   },
-  highlight: {
-    fontWeight: '700',
+  header:{
+    marginTop:-50,
+    marginBottom: 100,
+  },
+  heading:{
+    fontSize: 45,
+    
+    // fontWeight: 500
+    
+  },
+  card: {
+    margin:10,
+    backgroundColor: '#C428F9',
+    padding: 20,
+    borderRadius: 10,
+   
+  },
+  quote: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 10,
+    color: '#fff'
+  },
+  author: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'right',
+    marginBottom: 10,
+    paddingRight:25,
+    color: '#fff'
+
+  },
+  btn: {
+    marginTop: 5,
+    padding: 8,   
+    borderRadius: 5,
+    width:'90%',
+    backgroundColor:'#e7e7e7',
+    alignSelf:'flex-end'
+
   },
 });
 
