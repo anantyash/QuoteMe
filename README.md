@@ -1,5 +1,4 @@
 # QuoteMe App
-================
 
 ## Introduction
 QuoteMe is a simple mobile app that displays inspirational quotes from a third-party API. This app is a practice project to demonstrate the integration of an API with a React Native application.
