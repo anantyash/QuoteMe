@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "qtapp.app"
-               BlueprintName = "qtapp"
-               ReferencedContainer = "container:qtapp.xcodeproj">
+               BuildableName = "QuoteMe.app"
+               BlueprintName = "QuoteMe"
+               ReferencedContainer = "container:QuoteMe.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "qtappTests.xctest"
-               BlueprintName = "qtappTests"
-               ReferencedContainer = "container:qtapp.xcodeproj">
+               BuildableName = "QuoteMeTests.xctest"
+               BlueprintName = "QuoteMeTests"
+               ReferencedContainer = "container:QuoteMe.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "qtapp.app"
-            BlueprintName = "qtapp"
-            ReferencedContainer = "container:qtapp.xcodeproj">
+            BuildableName = "QuoteMe.app"
+            BlueprintName = "QuoteMe"
+            ReferencedContainer = "container:QuoteMe.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "qtapp.app"
-            BlueprintName = "qtapp"
-            ReferencedContainer = "container:qtapp.xcodeproj">
+            BuildableName = "QuoteMe.app"
+            BlueprintName = "QuoteMe"
+            ReferencedContainer = "container:QuoteMe.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

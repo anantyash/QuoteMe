@@ -1,4 +1,4 @@
-package com.qtapp
+package com.QuoteMe
 
 import android.app.Application
 import com.facebook.react.PackageList
